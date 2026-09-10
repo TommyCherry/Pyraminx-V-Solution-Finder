@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
     <title>Pyraminx V Solver</title>
 
     <link
@@ -54,13 +56,10 @@
     <h2 class="scramble-title">
         Scramble:{% if scramble and not error %} {{ scramble }}{% endif %}
     </h2>
-    
-    <canvas id="pyraminxCanvas"></canvas>
 
     <canvas
         id="pyraminxCanvas"
-        width="1900"
-        height="800">
+        height="100">
     </canvas>
 
     {% if solutions %}

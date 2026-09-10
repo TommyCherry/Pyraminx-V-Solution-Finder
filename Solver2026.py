@@ -195,11 +195,11 @@ class Pyraminx:
 
     def _R(self):
         self._cycle_edges(BG, BY, GY, flips=(GY, BY))
-        self._rotate_center(R, False)
+        self._rotate_center(R, True)
     
     def _R_prime(self):
         self._cycle_edges(BG, GY, BY, flips=(BG, BY))
-        self._rotate_center(R, True)
+        self._rotate_center(R, False)
 
 
     def _B(self):
@@ -325,17 +325,17 @@ class Pyraminx:
 
         # The three sticker locations belonging to each center
         center_stickers = {
-            G: [("red", 8),   ("blue", 7),  ("yellow", 3)],
+            G: [("red", 8),  ("yellow", 3), ("blue", 7)],
             R: [("green", 8), ("blue", 3),  ("yellow", 7)],
-            B: [("green", 7), ("red", 3),   ("yellow", 8)],
+            B: [("green", 7),   ("yellow", 8), ("red", 3)],
             Y: [("green", 3), ("red", 7),   ("blue", 8)]
         }
 
         # The three tip stickers belonging to the same four vertices
         tip_stickers = {
-            G: [("red", 6),   ("blue", 4),  ("yellow", 0)],
+            G: [("red", 6),  ("yellow", 0), ("blue", 4)],
             R: [("green", 6), ("blue", 0),  ("yellow", 4)],
-            B: [("green", 4), ("red", 0),   ("yellow", 6)],
+            B: [("green", 4),   ("yellow", 6), ("red", 0)],
             Y: [("green", 0), ("red", 4),   ("blue", 6)]
         }
 
