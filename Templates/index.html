@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pyraminx V Solver</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+    <h1>Pyraminx V Solver</h1>
+
+    <form method="POST">
+        <div class="solver-box">
+
+            <div class="form-group">
+                <label for="scramble">Scramble:</label>
+                <input
+                    type="text"
+                    id="scramble"
+                    name="scramble"
+                    placeholder="Enter scramble"
+                >
+
+                {% if error %}
+                    <span class="error">{{ error }}</span>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="max_depth">Maximum solution length:</label>
+                <input
+                    type="number"
+                    id="max_depth"
+                    name="max_depth"
+                    value="5"
+                    min="0"
+                    max="7"
+                >
+
+                {% if depth_error %}
+                    <span class="depth-error">{{ depth_error }}</span>
+                {% endif %}
+            </div>
+
+            <button type="submit">Solve</button>
+
+        </div>
+    </form>
+
+    <h2 class="scramble-title">
+        Scramble:{% if scramble and not error %} {{ scramble }}{% endif %}
+    </h2>
+    
+    <canvas id="pyraminxCanvas"></canvas>
+
+    <canvas
+        id="pyraminxCanvas"
+        width="1900"
+        height="800">
+    </canvas>
+
+    {% if solutions %}
+    <div class="solutions-panel">
+        <h2>Solutions</h2>
+
+        {% for depth in range(solutions|length) %}
+            <h3>Length {{ depth }}</h3>
+
+            {% if solutions[depth] %}
+                {% for solution in solutions[depth] %}
+                    <div>{{ " ".join(solution) }}</div>
+                {% endfor %}
+            {% else %}
+                <div>None</div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <script>
+        const faceColors = {{ face_colors | tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='pyraminx.js') }}"></script>
+</body>
+</html>
