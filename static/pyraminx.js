@@ -32,7 +32,7 @@ function drawTriangle(x1, y1, x2, y2, x3, y3, color, label="") {
     ctx.textBaseline = "middle";
 
     // Draw the number (used for production, not user-facing)
-    ctx.fillText(label, centerX, centerY);
+    // ctx.fillText(label, centerX, centerY);
 }
 
 function drawFace(topX, topY, size, colors) {
